@@ -1,0 +1,45 @@
+.home {
+}
+
+.home__jumbo {
+  width: 100%;
+  height: 75vh;
+
+  background-image: url("https://news.bitcoin.com/wp-content/uploads/2019/09/cryptocurrencies.png");
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.home__jumboText {
+  position: absolute;
+  color: white;
+}
+
+.home__aboutCrypto {
+  width: 100%;
+  height: 100vh;
+  background-color: lightblue;
+  display: flex;
+}
+.aboutCrypto {
+  margin: 200px;
+}
+
+.aboutCrypto > p {
+  border: 2px solid black;
+  background-color: white;
+  padding: 20px;
+
+  border-radius: 30px;
+}
+
+.aboutCrypto__design {
+  width: 5px;
+  height: 75vh;
+  background-color: green;
+  margin-bottom: auto;
+  margin-top: auto;
+}
