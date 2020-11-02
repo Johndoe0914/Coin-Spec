@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
+import Dropdown from './Dropdown';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -32,6 +33,11 @@ const Navbar = () => {
                     <span>Dashboard</span>
                 </div>
             </Link>
+            
+            <div className='navbar__item'>
+                    <Dropdown />
+                </div>
+      
             </nav>
         </div>
     )

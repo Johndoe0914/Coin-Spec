@@ -1,0 +1,7 @@
+.dropdown {
+}
+
+.dropdown__items {
+  list-style: none;
+  background-color: white;
+}
