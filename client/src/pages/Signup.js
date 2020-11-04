@@ -1,13 +1,18 @@
+import { connect } from 'mongoose';
 import React, {useState, useEffect} from 'react'
+import register from '../actions/auth';
+import PropTypes from 'prop-types';
 import './Signup.css';
 
-const Signup = () => {
+const Signup = ({register}) => {
     const [ formData, setFormData ] = useState({
         name: '',
         email: '',
         password: '',
         repeatpassword: ''
     })
+
+    const {name, email, password, repeatpassword} = formData
 
     const handleChange = (e) => {
     setFormData({...formData ,[e.target.name] : e.target.value })
@@ -16,6 +21,13 @@ const Signup = () => {
 }
     const handleSubmit = (e) => {
         e.preventDefault()
+
+        if(password !== repeatpassword) {
+            alert('passwords dont match')
+        } else {
+            register({name, email, password})
+        }
+        
 
     }
     return (
@@ -34,11 +46,18 @@ const Signup = () => {
                     <label>Repeat Password</label>
                     <input onChange={(e) => handleChange(e)} type='password' name='repeatpassword' />
 
-                    <button>Submit</button>
+                    <button onClick={(e) => handleSubmit(e)}>Submit</button>
                 </form>
             </div>
         </div>
     )
 }
 
-export default Signup
+Signup.propTypes = {
+    register: PropTypes.func.isRequired,
+}
+
+
+export default connect(
+    null, {register}
+)(Signup);

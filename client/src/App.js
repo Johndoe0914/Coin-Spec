@@ -6,11 +6,17 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings'
 import Navbar from './components/Navbar';
+//redux
+
+import {Provider} from 'react-redux';
+import store from './store';
+
 
 
 const App = () => {
   return (
-    <Router>
+ <Provider store={store}>
+      <Router>
       <Navbar />
       <Switch>
         <Route path='/' exact component={Home}/>
@@ -21,6 +27,7 @@ const App = () => {
 
       </Switch>
     </Router>
+ </Provider>
   );
 }
 
