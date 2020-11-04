@@ -1,0 +1,16 @@
+.settings {
+  background-color: #051027;
+}
+.settings > h3 {
+  text-align: center;
+  color: white;
+}
+.settings > h1 {
+  text-align: center;
+  bottom: 0px;
+  color: greenyellow;
+}
+
+.settings > h1:hover {
+  box-shadow: yellowgreen;
+}

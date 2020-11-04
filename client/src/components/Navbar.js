@@ -33,6 +33,12 @@ const Navbar = () => {
                     <span>Dashboard</span>
                 </div>
             </Link>
+            <Link to={`/settings/11`}>
+            <div className='navbar__item'>
+                    <span>Settings</span>
+                </div>
+            </Link>
+            
             
             <div className='navbar__item'>
                     <Dropdown />
