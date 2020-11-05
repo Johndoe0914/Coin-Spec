@@ -1,17 +1,19 @@
 .coingrid {
-  height: 85vh;
+  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  border: 3px solid white;
 }
 
 .coinGrid__coin {
-  width: 50px;
+  width: 80px;
   color: white;
-  height: 40px;
+  height: 70px;
   border: 2px solid white;
-  padding: 20px;
+  text-align: center;
+  padding: 10px;
   margin: 5px;
 }

@@ -58,6 +58,4 @@ Signup.propTypes = {
 }
 
 
-export default connect(
-    null, {register}
-)(Signup);
+export default Signup
