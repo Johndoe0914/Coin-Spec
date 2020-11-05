@@ -4,13 +4,35 @@
 .settings > h3 {
   text-align: center;
   color: white;
+  margin-top: 75px;
 }
 .settings > h1 {
   text-align: center;
-  bottom: 0px;
+  margin-top: 50px;
+  margin-bottom: 30px;
   color: greenyellow;
 }
 
 .settings > h1:hover {
   box-shadow: yellowgreen;
+}
+
+.coinGrid {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.coinGrid__coin {
+  width: 80px;
+  color: white;
+  height: 70px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 15px;
+  margin: 5px;
 }

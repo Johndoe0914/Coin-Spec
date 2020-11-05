@@ -3,9 +3,9 @@ import './Cointile.css'
 
 const CoinTile = ({coin}) => {
     return (
-        <div className='cointile'>
+        <div className='cointile' >
             <small>{coin.CoinName}</small>
-
+    <small>{coin.Symbol}</small>
             
 <span>
 <img src={`http://cryptocompare.com/${coin.ImageUrl}`} />
