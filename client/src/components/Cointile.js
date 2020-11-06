@@ -8,7 +8,7 @@ const CoinTile = ({coin}) => {
     <small>{coin.Symbol}</small>
             
 <span>
-<img src={`http://cryptocompare.com/${coin.ImageUrl}`} />
+<img src={`https://www.cryptocompare.com/${coin.ImageUrl}`} />
 </span>            
         </div>
     )
