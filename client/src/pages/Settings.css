@@ -36,3 +36,13 @@
   padding: 15px;
   margin: 5px;
 }
+
+.removeCoin :hover {
+  box-shadow: 0px 10px 53px 0px red;
+  cursor: pointer;
+}
+
+.addCoin :hover {
+  box-shadow: 0px 10px 53px 0px green;
+  cursor: pointer;
+}
