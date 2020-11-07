@@ -45,11 +45,12 @@ const MAX_FAVORITES = 10;
         let favCoinSymbol = e.currentTarget.dataset.symbol;
         let favCoinImage = e.currentTarget.dataset.img
 
+
     
         let favorites = [...favoriteCoins]
 
         if(favorites.length < MAX_FAVORITES) {
-            let newItem = {CoinName: favCoinName, CoinSymbol: favCoinSymbol, CoinImage:favCoinImage};
+            let newItem = {CoinName: favCoinName, CoinSymbol: favCoinSymbol, ImageUrl:favCoinImage};
             console.log(newItem)
             
         favorites.unshift(newItem)
