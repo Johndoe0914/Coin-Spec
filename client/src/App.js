@@ -6,16 +6,22 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Settings from './pages/Settings'
 import Navbar from './components/Navbar';
+
+import reducer, { initialState } from "./reducers/user";
+import React, { createContext, useContext, useReducer } from "react";
+export const StateContext = createContext();
+
 //redux
 
-import {Provider} from 'react-redux';
-import store from './store';
+
+
 
 
 
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
- <Provider store={store}>
+    <StateContext.Provider value={{state, dispatch}}>
       <Router>
       <Navbar />
       <Switch>
@@ -27,8 +33,10 @@ const App = () => {
 
       </Switch>
     </Router>
- </Provider>
+    </StateContext.Provider>
+
   );
 }
+export const useStateValue = () => useContext(StateContext);
 
 export default App;

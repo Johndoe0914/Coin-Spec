@@ -1,0 +1,18 @@
+.search {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.searchInput {
+}
+
+.search > form > label {
+  color: white;
+  padding: 15px;
+  font-size: larger;
+}
+
+.search > form > input {
+  height: 30px;
+  width: 400px;
+}

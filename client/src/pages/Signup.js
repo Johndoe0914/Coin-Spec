@@ -1,10 +1,14 @@
-import { connect } from 'mongoose';
+
 import React, {useState, useEffect} from 'react'
-import register from '../actions/auth';
-import PropTypes from 'prop-types';
+import Register from '../actions/user';
+import axios from 'axios';
+
 import './Signup.css';
 
-const Signup = ({register}) => {
+const Signup = () => {
+   
+
+
     const [ formData, setFormData ] = useState({
         name: '',
         email: '',
@@ -17,15 +21,45 @@ const Signup = ({register}) => {
     const handleChange = (e) => {
     setFormData({...formData ,[e.target.name] : e.target.value })
 
-    console.log(formData)
+ 
 }
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
+        console.log('csubmit')
 
         if(password !== repeatpassword) {
             alert('passwords dont match')
         } else {
-            register({name, email, password})
+            const newUser = {
+                name,
+                email,
+                password
+            }
+
+            const body = JSON.stringify(newUser)
+ 
+    try {
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        const res = await axios.post('/api/users', body, config)
+    // dispatch({
+    //     type: 'REGISTER_SUCCESS',
+    //     payload: res.data
+
+    // })
+    console.log(res ,"success")
+    
+    } catch(err) {
+        // dispatch({
+        //     type: 'REGISTER_FAILED',
+        // })
+        console.log(err)
+    }
+            
+            // Register({name, email, password})
         }
         
 
@@ -36,7 +70,7 @@ const Signup = ({register}) => {
 
             <div className='signup__form'>
             <h1>Sign Up With Us</h1>
-                <form>
+                <form onSubmit={(e) => handleSubmit(e)}>
                     <label>Name</label>
                     <input onChange={(e) => handleChange(e)} type='text' name='name'/>
                     <label>Email</label>
@@ -46,15 +80,11 @@ const Signup = ({register}) => {
                     <label>Repeat Password</label>
                     <input onChange={(e) => handleChange(e)} type='password' name='repeatpassword' />
 
-                    <button onClick={(e) => handleSubmit(e)}>Submit</button>
+                    <button >Submit</button>
                 </form>
             </div>
         </div>
     )
-}
-
-Signup.propTypes = {
-    register: PropTypes.func.isRequired,
 }
 
 
