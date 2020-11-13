@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom';
 import Dropdown from './Dropdown';
+import { useStateValue } from "../StateProvider";
+
 import './Navbar.css';
 
 const Navbar = () => {
+     const [ dispatch] = useStateValue();
+    
     return (
         <div className='navbar'>
             <nav className='navbar__nav'>

@@ -1,14 +1,15 @@
 import React,{useState, useEffect} from 'react'
+import Redirect from 'react-router-dom';
 import './Settings.css';
 import CoinTile from '../components/Cointile';
-import _ from 'lodash';
+import _, { assign } from 'lodash';
 import cc, { } from 'cryptocompare';
 import SearchInput from '../components/Searchinput';
 import fuzzy from 'fuzzy';
 
 cc.setApiKey('35182313c6fb8bb87ed11b82d9fe0033af059f5a46d9c038146861c22ca94df8')
 
-
+const token = localStorage.getItem("user")
 const MAX_FAVORITES = 10;
  const Settings = () => {
     const [coinsList, setCoinsList] = useState([]);
@@ -32,7 +33,7 @@ const MAX_FAVORITES = 10;
 
      const displayCoins = (coinsList) => {
         // console.log(coinsList)
-
+        console.log('token',token)
         return coinsList.slice(0,96).map((coin, i) =>  (<div key={i} data-name={coin.CoinName} data-symbol={coin.Symbol} data-img={coin.ImageUrl} onClick={e => addCoin(e)} className='coinGrid__coin addCoin'><CoinTile coin={coin}/></div>)
         )
     }
@@ -62,29 +63,24 @@ const MAX_FAVORITES = 10;
 
         if(favorites.length < MAX_FAVORITES) {
             let newItem = {CoinName: favCoinName, CoinSymbol: favCoinSymbol, ImageUrl:favCoinImage};
-            console.log(newItem)
+           
             
         favorites.unshift(newItem)
                 setFavoriteCoins([...favorites])
-                console.log(coinsList)
+                
                 // console.log(coinsList)
                 // console.log(favoriteCoins)
         }
 
     }
 
-    // const finditem = (array, item) => {
-    //     return array.
-    // }
-
+    
     const removeCoin = (e,i) => {
 
         let coinindex= e.currentTarget.dataset.id
 
       
 
-        console.log()
-        console.log(e,'event')
         const favorites = [...favoriteCoins];
        
        
@@ -92,7 +88,7 @@ const MAX_FAVORITES = 10;
         favorites.splice(coinindex, 1)
         // const newfav = _.pullAll(favorites, coinID)
         setFavoriteCoins([...favorites])
-        console.log('removed')
+        
     }
 
 
@@ -119,6 +115,20 @@ const MAX_FAVORITES = 10;
         setFilteredCoins(filteredCoins)
 
     }
+
+
+    const confirmFavorites = (e) => {
+        let favCoins = [...favoriteCoins];
+
+        localStorage.setItem('cryptoDash', JSON.stringify(
+            favCoins
+        ))
+        console.log(localStorage.getItem('cryptoDash'))
+        window.location.href = 'localhost:3000/dashboard/12'
+        
+        
+        
+    }
     return (
         <div className='settings'>
             <h3>Welcome to CryptoDash, please select your favorite coins to begin.</h3>
@@ -128,7 +138,7 @@ const MAX_FAVORITES = 10;
            <span>
                <SearchInput filterCoins={filterCoins} />
            </span>
-            <h1>Confirm Favorites</h1>
+            <h1 onClick={(e) => confirmFavorites(e)}>Confirm Favorites</h1>
 
       
             <div className='coinGrid'>

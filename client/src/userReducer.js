@@ -1,5 +1,6 @@
 
 
+
 export const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
     switch(type) {
         case 'REGISTER_SUCCESS':
             localStorage.setItem('token', payload.token);
+            console.log(initialState)
             return {
                 ...state,
                 ...payload,
@@ -37,3 +39,4 @@ const reducer = (state = initialState, action) => {
 }
 
 export default reducer
+

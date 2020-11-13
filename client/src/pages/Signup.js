@@ -1,11 +1,14 @@
 
 import React, {useState, useEffect} from 'react'
 import Register from '../actions/user';
+import { useStateValue } from "../StateProvider";
 import axios from 'axios';
 
 import './Signup.css';
 
 const Signup = () => {
+    const [ dispatch] = useStateValue();
+
    
 
 
@@ -50,6 +53,7 @@ const Signup = () => {
     //     payload: res.data
 
     // })
+    
     console.log(res ,"success")
     
     } catch(err) {
