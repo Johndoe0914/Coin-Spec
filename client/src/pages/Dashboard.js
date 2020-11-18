@@ -12,20 +12,21 @@ const Dashboard = () => {
 
     const fetchPrices = async() => {
         let prices = await getPrices();
-
-        prices = prices.filter(price => Object.keys(price).length)
-        console.log(prices)
-        setPrices(prices)
+    
+        
+        
+       prices = prices.filter(price => price.USD)
+    //    console.log(prices)
+       setPrices(prices)
 
        }
 
     useEffect(() => {
        let favcoins = JSON.parse(localStorage.getItem('cryptoDash'))
-  
        setFavoriteCoins(favcoins)
 
         fetchPrices()
-        console.log(prices)
+
     }, [])
 
  
@@ -33,14 +34,6 @@ const Dashboard = () => {
        const getPrices = async () => {
         let returnData = [];
 
-        // try{
-        //     let priceData = await cc.priceFull(favoriteCoins[0], 'USD');
-
-
-        //     returnData.push(priceData)
-        // } catch(e) {
-        //     console.log(e)
-        // }
 
         for(let i = 0; i < favoriteCoins.length; i++) {
             try {
@@ -52,24 +45,25 @@ const Dashboard = () => {
                 console.warn('fetch price error',e)
             }        
        }
-      
+      console.log(returnData)
        return returnData
     }
+    
     return (
         <div className='dashboard'>
             <h1>dashboard</h1>
             
             <div className='dashboard__pricegrid'>
                 <PriceGrid>
-                {prices && (prices.map(price => {
-                   <Pricetile price={price} />
-                }))}
+                {prices.map((price,index) => {
+                  console.log(price.USD.price)
+                })}
    
                 </PriceGrid>
             </div>
     {/* <p>{JSON.stringify(favoriteCoins)}</p>
    */}
-    {/* {!prices === '' ?  <h2>loading prices</h2>: (JSON.stringify(prices)) } */}
+  {JSON.stringify(prices)}
         </div>
     )
 }
